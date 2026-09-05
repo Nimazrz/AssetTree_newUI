@@ -3,7 +3,22 @@ name: Build Android APK
 on:
   push:
     branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+      - 'App_Prompt.md'
+      - 'metadata.json'
+      - '.gitignore'
+  pull_request:
+    branches: [ main, master ]
   workflow_dispatch: {}
+
+# Cancel older in-progress runs for the same branch/PR so pushes don't queue up.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -20,31 +35,70 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      # AGP 9 / compileSdk 36 need current cmdline-tools + platform 36 + build-tools,
+      # which the default ubuntu-latest image doesn't always have preinstalled.
+      # This installs whatever's missing and accepts the SDK licenses non-interactively.
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install required SDK packages
+        run: |
+          sdkmanager --install "platforms;android-36" "build-tools;36.0.0" > /dev/null
+
+      # gradle/actions/setup-gradle transparently caches ~/.gradle/caches and the
+      # wrapper distribution across runs (keyed on gradle/libs.versions.toml + wrapper
+      # properties), so no separate actions/cache step is needed.
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
 
       - name: Generate debug keystore
         # The repo's .gitignore excludes debug.keystore, and app/build.gradle.kts
         # expects it at the project root with the standard Android debug
         # credentials. Regenerate it here so the debug build type can sign.
         run: |
-          keytool -genkeypair -v \
-            -keystore debug.keystore \
-            -storepass android \
-            -alias androiddebugkey \
-            -keypass android \
-            -keyalg RSA -keysize 2048 -validity 10000 \
-            -dname "CN=Android Debug,O=Android,C=US"
+          if [ ! -f debug.keystore ]; then
+            keytool -genkeypair -v \
+              -keystore debug.keystore \
+              -storepass android \
+              -alias androiddebugkey \
+              -keypass android \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest --stacktrace --build-cache
+
       - name: Build debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: ./gradlew assembleDebug --stacktrace --build-cache
+
+      - name: Summarize APK output
+        if: always()
+        run: |
+          {
+            echo "### APK build summary"
+            echo
+            find app/build/outputs/apk/debug -name "*.apk" -exec ls -lh {} \; 2>/dev/null || echo "No APK produced."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-apk
+          name: app-debug-apk-${{ github.run_number }}
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload unit test report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-report-${{ github.run_number }}
+          path: app/build/reports/tests/testDebugUnitTest
+          if-no-files-found: ignore
+          retention-days: 7
