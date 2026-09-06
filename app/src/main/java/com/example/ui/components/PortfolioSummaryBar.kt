@@ -60,9 +60,9 @@ fun PortfolioSummaryBar(
         ) {
             // Card 1: Total Portfolio Hero Banner (High Density Deep Blue with Container Accents)
             Card(
-                shape = RoundedCornerShape(24.dp),
+                shape = RoundedCornerShape(28.dp),
                 colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Box(
@@ -71,13 +71,13 @@ fun PortfolioSummaryBar(
                         .background(
                             Brush.linearGradient(
                                 listOf(
+                                    HighDensityPrimaryLight,
                                     colors.primary,
-                                    HighDensityPrimaryDark,
-                                    Color(0xFF002952)
+                                    Color(0xFF101E4A)
                                 )
                             )
                         )
-                        .padding(if (isCompact) 10.dp else 14.dp)
+                        .padding(if (isCompact) 12.dp else 16.dp)
                 ) {
                     Column(
                         modifier = Modifier.fillMaxWidth(),

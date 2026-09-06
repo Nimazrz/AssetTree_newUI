@@ -50,69 +50,69 @@ data class AppThemeColors(
 fun getAppColors(primaryHex: Long, isDark: Boolean): AppThemeColors {
     val primaryColor = Color(primaryHex)
     return if (isDark) {
-        val bg = Color(0xFF090A0E)
-        val surfColor = Color(0xFF141620)
+        val bg = Color(0xFF07080D)
+        val surfColor = Color(0xFF13151F)
         AppThemeColors(
             isDark = true,
-            background = bg.copy(alpha=0.9f),
+            background = bg.copy(alpha=0.94f),
             surface = surfColor,
-            surfaceVariant = Color(0xFF1B1E2B),
-            border = Color(0xFF282D3E),
-            textPrimary = Color(0xFFF3F4F8),
-            textSecondary = Color(0xFF9EA6BB),
-            textMuted = Color(0xFF687085),
+            surfaceVariant = Color(0xFF1B1E2C),
+            border = Color(0xFF272C3E),
+            textPrimary = Color(0xFFF5F6FA),
+            textSecondary = Color(0xFFA3AAC0),
+            textMuted = Color(0xFF6A7086),
             primary = primaryColor,
-            primaryContainer = primaryColor.copy(alpha = 0.25f),
-            onPrimaryContainer = Color(0xFFCEE3FF),
-            gain = Color(0xFF10B981),
-            gainContainer = Color(0xFF0E382A),
-            onGainContainer = Color(0xFFA7F3D0),
-            loss = Color(0xFFF43F5E),
-            lossContainer = Color(0xFF45111E),
-            onLossContainer = Color(0xFFFECDD3),
-            warning = Color(0xFFF59E0B),
-            warningContainer = Color(0xFF422806),
+            primaryContainer = primaryColor.copy(alpha = 0.28f),
+            onPrimaryContainer = Color(0xFFDCE5FF),
+            gain = Color(0xFF22C58E),
+            gainContainer = Color(0xFF0D3A2C),
+            onGainContainer = Color(0xFFAFF6D2),
+            loss = Color(0xFFFB4570),
+            lossContainer = Color(0xFF461225),
+            onLossContainer = Color(0xFFFFD3DE),
+            warning = Color(0xFFFBAA1E),
+            warningContainer = Color(0xFF422A06),
             onWarningContainer = Color(0xFFFDE68A),
-            inputBackground = Color(0xFF171A25),
-            inputBorder = Color(0xFF31364A),
-            inputText = Color(0xFFF3F4F8),
-            inputPlaceholder = Color(0xFF70778D),
-            cardHighlight = Color(0xFF202434)
+            inputBackground = Color(0xFF171A27),
+            inputBorder = Color(0xFF31364C),
+            inputText = Color(0xFFF5F6FA),
+            inputPlaceholder = Color(0xFF747C93),
+            cardHighlight = Color(0xFF1F2333)
         )
     } else {
-        val bg = Color(0xFFFAFAFA)
+        val bg = Color(0xFFF7F8FC)
         AppThemeColors(
             isDark = false,
-            background = bg.copy(alpha=0.9f),
-            surface = Color(0xFFF2F4F7),
-            surfaceVariant = Color(0xFFE5E7EB),
-            border = Color(0xFFDDE2EE),
-            textPrimary = Color(0xFF0F172A),
-            textSecondary = Color(0xFF475569),
-            textMuted = Color(0xFF94A3B8),
+            background = bg,
+            surface = Color(0xFFFFFFFF),
+            surfaceVariant = Color(0xFFEEF1F8),
+            border = Color(0xFFE3E7F2),
+            textPrimary = Color(0xFF12141C),
+            textSecondary = Color(0xFF4A5068),
+            textMuted = Color(0xFF97A0B8),
             primary = primaryColor,
-            primaryContainer = primaryColor.copy(alpha = 0.15f),
+            primaryContainer = primaryColor.copy(alpha = 0.13f),
             onPrimaryContainer = primaryColor,
-            gain = Color(0xFF00875A),
-            gainContainer = Color(0xFFD4F6E5),
-            onGainContainer = Color(0xFF003822),
-            loss = Color(0xFFDC2626),
-            lossContainer = Color(0xFFFFE4E6),
-            onLossContainer = Color(0xFF5B000C),
-            warning = Color(0xFFD97706),
-            warningContainer = Color(0xFFFEF3C7),
-            onWarningContainer = Color(0xFF451A03),
-            inputBackground = Color(0xFFF3F4F6),
-            inputBorder = Color(0xFFCBD5E1),
-            inputText = Color(0xFF0F172A),
-            inputPlaceholder = Color(0xFF94A3B8),
-            cardHighlight = Color(0xFFF1F5F9)
+            gain = Color(0xFF0D8E5F),
+            gainContainer = Color(0xFFD8F7E7),
+            onGainContainer = Color(0xFF00301E),
+            loss = Color(0xFFE0244F),
+            lossContainer = Color(0xFFFFE1E8),
+            onLossContainer = Color(0xFF5C0018),
+            warning = Color(0xFFCE7E00),
+            warningContainer = Color(0xFFFFF0D2),
+            onWarningContainer = Color(0xFF432C00),
+            inputBackground = Color(0xFFF3F5FA),
+            inputBorder = Color(0xFFD7DDEC),
+            inputText = Color(0xFF12141C),
+            inputPlaceholder = Color(0xFF97A0B8),
+            cardHighlight = Color(0xFFF0F3FA)
         )
     }
 }
 
-val DarkAppColors = getAppColors(0xFF005FB1, true)
-val LightAppColors = getAppColors(0xFF005FB1, false)
+val DarkAppColors = getAppColors(0xFF2F5FE0, true)
+val LightAppColors = getAppColors(0xFF2F5FE0, false)
 
 val LocalAppThemeColors = staticCompositionLocalOf { LightAppColors }
 
@@ -193,7 +193,7 @@ private val LightColorScheme =
 fun MyApplicationTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
   dynamicColor: Boolean = false,
-  primaryColorHex: Long = 0xFF005FB1,
+  primaryColorHex: Long = 0xFF2F5FE0,
   fontScale: Float = 1.0f,
   content: @Composable () -> Unit,
 ) {

@@ -48,9 +48,9 @@ fun SharedViewHeader(
     val viewModes = settings.customViewOrder.ifEmpty { AppViewMode.values().toList() }
 
     Surface(
-        color = colors.surfaceVariant.copy(alpha = 0.45f),
-        shape = RoundedCornerShape(16.dp),
-        border = androidx.compose.foundation.BorderStroke(1.dp, colors.border.copy(alpha = 0.4f)),
+        color = colors.surfaceVariant.copy(alpha = 0.55f),
+        shape = RoundedCornerShape(20.dp),
+        border = androidx.compose.foundation.BorderStroke(1.dp, colors.border.copy(alpha = 0.45f)),
         modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 4.dp)
     ) {
         Column(
@@ -212,11 +212,11 @@ fun SharedViewHeader(
                             }
                         }
                     },
-                    shape = RoundedCornerShape(14.dp),
+                    shape = RoundedCornerShape(18.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedContainerColor = colors.inputBackground,
                         unfocusedContainerColor = colors.inputBackground,
-                        focusedBorderColor = colors.primary.copy(alpha = 0.5f),
+                        focusedBorderColor = colors.primary.copy(alpha = 0.6f),
                         unfocusedBorderColor = Color.Transparent,
                         cursorColor = colors.primary
                     ),

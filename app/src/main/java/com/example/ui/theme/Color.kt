@@ -2,34 +2,34 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// High Density Theme Color Palette
-val HighDensityBg = Color(0xFFF3F4F9)
+// High Density Theme Color Palette (modernized — richer, higher-contrast fintech palette)
+val HighDensityBg = Color(0xFFF4F6FB)
 val HighDensitySurface = Color(0xFFFFFFFF)
-val HighDensityBorder = Color(0xFFE1E2EC)
-val HighDensityTextPrimary = Color(0xFF1B1B1F)
-val HighDensityTextSecondary = Color(0xFF44474E)
+val HighDensityBorder = Color(0xFFE3E6F0)
+val HighDensityTextPrimary = Color(0xFF161821)
+val HighDensityTextSecondary = Color(0xFF474C5C)
 
-val HighDensityPrimary = Color(0xFF005FB1)
-val HighDensityPrimaryDark = Color(0xFF004583)
-val HighDensityPrimaryLight = Color(0xFF3890F0)
-val HighDensityPrimaryContainer = Color(0xFFD3E4FF)
-val HighDensityOnPrimaryContainer = Color(0xFF001D36)
+val HighDensityPrimary = Color(0xFF2F5FE0)
+val HighDensityPrimaryDark = Color(0xFF1E3F9E)
+val HighDensityPrimaryLight = Color(0xFF6C93FF)
+val HighDensityPrimaryContainer = Color(0xFFDCE5FF)
+val HighDensityOnPrimaryContainer = Color(0xFF001A4C)
 
-val HighDensitySecondary = Color(0xFF535F70)
-val HighDensitySecondaryContainer = Color(0xFFD7E3F8)
-val HighDensityOnSecondaryContainer = Color(0xFF101C2B)
+val HighDensitySecondary = Color(0xFF525C72)
+val HighDensitySecondaryContainer = Color(0xFFD9E1F9)
+val HighDensityOnSecondaryContainer = Color(0xFF0F1A2E)
 
-val HighDensityPurple = Color(0xFF6750A4)
-val HighDensityPurpleContainer = Color(0xFFEADDFF)
-val HighDensityOnPurpleContainer = Color(0xFF21005D)
+val HighDensityPurple = Color(0xFF7C4DE0)
+val HighDensityPurpleContainer = Color(0xFFEBDFFF)
+val HighDensityOnPurpleContainer = Color(0xFF260066)
 
-val HighDensityRose = Color(0xFFBA1A1A)
-val HighDensityRoseContainer = Color(0xFFFFDADA)
-val HighDensityOnRoseContainer = Color(0xFF410002)
+val HighDensityRose = Color(0xFFDB2350)
+val HighDensityRoseContainer = Color(0xFFFFDCE3)
+val HighDensityOnRoseContainer = Color(0xFF3F0012)
 
-val HighDensityEmerald = Color(0xFF006C4C)
-val HighDensityEmeraldContainer = Color(0xFF8BF8BE)
-val HighDensityOnEmeraldContainer = Color(0xFF002114)
+val HighDensityEmerald = Color(0xFF0E9764)
+val HighDensityEmeraldContainer = Color(0xFFAFF6D2)
+val HighDensityOnEmeraldContainer = Color(0xFF00291A)
 
 // Backward compatibility mappings seamlessly tuned to High Density
 val AmberPrimary = HighDensityPrimary
@@ -42,9 +42,9 @@ val EmeraldGain = HighDensityEmerald
 val EmeraldContainer = HighDensityEmeraldContainer
 val OnEmeraldContainer = HighDensityOnEmeraldContainer
 
-val BlueSecondary = Color(0xFF005FB1)
-val BlueContainer = Color(0xFFD3E4FF)
-val OnBlueContainer = Color(0xFF001D36)
+val BlueSecondary = Color(0xFF2F5FE0)
+val BlueContainer = Color(0xFFDCE5FF)
+val OnBlueContainer = Color(0xFF001A4C)
 
 val PurpleIndustry = HighDensityPurple
 val PurpleContainer = HighDensityPurpleContainer

@@ -88,12 +88,12 @@ fun AppTopBar(
                 // بخش اصلی برنامه با پس‌زمینه متمایز و روشن‌تر و حاشیه خط‌دار ملایم
                 // (نماد برنامه، تاریخ و ساعت، سه نقطه، آیکون خروج، ارزش کل و مبلغ، علامت چشم)
                 Card(
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(20.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = if (isDark) colors.surfaceVariant.copy(alpha = 0.7f) else Color(0xFFF8FAFC)
+                        containerColor = if (isDark) colors.surfaceVariant.copy(alpha = 0.75f) else colors.surface
                     ),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, colors.border.copy(alpha = 0.6f)),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, colors.border.copy(alpha = 0.55f)),
+                    elevation = CardDefaults.cardElevation(defaultElevation = if (isDark) 0.dp else 3.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(
