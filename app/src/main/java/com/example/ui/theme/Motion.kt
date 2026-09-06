@@ -11,6 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 /**
  * Centralized motion tokens so every screen animates with the same feel:
  * quick, springy and never sluggish. Reuse these instead of ad-hoc durations.
